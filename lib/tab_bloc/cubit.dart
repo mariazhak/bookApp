@@ -27,7 +27,7 @@ class TabCubit extends Cubit<TabState> {
   void getBooks(String search) async{
     emit(SearchData(search: search, favorites: state.favorites));
     search = search.toLowerCase().replaceAll(' ', '+');
-    final http.Response response = await http.get(Uri.parse('https://www.googleapis.com/books/v1/volumes?q=$search+intitle&key=AIzaSyDN3QLM3UnW8zv2Pv72W4aAvJR8bMK8KJA'));
+    final http.Response response = await http.get(Uri.parse('https://www.googleapis.com/books/v1/volumes?q=$search+intitle&key=key'));
     BookList searchResults = BookList.empty();
     if(response.statusCode == 200) {
       print("Success");

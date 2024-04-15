@@ -30,13 +30,14 @@ class PageSearch extends StatelessWidget{
                 prefixIcon: Icon(Icons.search),
               ),
             ),
+            const SizedBox(height: 10),
             //ElevatedButton(onPressed: ()=> _getBooks('flower', context), child: const Text('Search')),
             BlocBuilder<TabCubit, TabState>(
               builder: (context, state) {
                   if (state is SearchData) {
                     return const CircularProgressIndicator();
                   }
-                  else if (state is SearchResult && state.searchResults.books.isNotEmpty){
+                  else if ((state is SearchResult && state.searchResults.books.isNotEmpty) || (state is TabData && state.searchResults.books.isNotEmpty)){
                     return Expanded(
                       child: ListView.builder(
                         itemCount: state.searchResults.books.length,
